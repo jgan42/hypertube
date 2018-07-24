@@ -1,0 +1,7 @@
+div.flex-center
+  div.form-container
+    form([formGroup]="formCustom", (submit)="onSubmitCustom()")
+      label.center-block Paste a magnet or a link to a torrent file
+        input(formControlName="magnetOrLink").form-control
+      div.form-group.text-right
+        button.btn.btn-success(type="submit") Stream !

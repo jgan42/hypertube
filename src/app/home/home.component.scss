@@ -1,0 +1,17 @@
+@import 'src/assets/colors/colors.scss';
+
+.tabs-buttons {
+  display: flex;
+
+  h2 {
+    padding: 10px 15px;
+    margin-bottom: 0;
+    border-radius: 15px 15px 0 0;
+    min-width: 100px;
+    text-align: center;
+
+    &.active {
+      background: $bg-main;
+    }
+  }
+}

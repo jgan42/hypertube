@@ -1,0 +1,47 @@
+section
+  div.flex-center
+    div.form-container
+      h3 Sign up
+      div.text-right
+        | Already have an account ?&nbsp;
+        a(routerLink="/authentication/sign-in") Sign In
+
+      form([formGroup]="form", (ngSubmit)="onSubmit()", [class.submitted]="submitted", enctype="multipart/form-data")
+        div.form-group
+          label.center-block
+            | First name :
+            input.form-control(formControlName="first_name")
+        div.form-group
+          label.center-block
+            | Last name :
+            input.form-control(formControlName="last_name")
+        div.form-group
+          label.center-block
+            | Login :
+            input.form-control(formControlName="login")
+        div.form-group
+          label.center-block
+            | Email :
+            input.form-control(type="email", formControlName="email")
+        div.form-group
+          label.center-block
+            | Language :
+            select.form-control(formControlName="language")
+              option(value="fr")
+                | French
+              option(value="en")
+                | English
+        div.form-group
+          label.center-block
+            | Password :
+            input.form-control(type="password", formControlName="password")
+        div.form-group
+          label.center-block
+            | Picture :
+            input.form-control((change)="onFileChange($event)", type="file", formControlName="picture", accept="image/*", #fileInput="")
+
+        app-message-error([error]="error")
+
+        div.form-group.text-right
+          app-oauth
+          button.btn.btn-success(type="submit") Submit

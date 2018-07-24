@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="80">
+  <path id="motionPath" d="M0,40
+  	21,40 24,38 27,45 30,30 33,42 36,40
+  	46,40 52,34 56,52 60,23 64,47 68,40
+  	80,40 84,28 88,65 92,10 96,50 100,40
+  	112,40 116,34 120,52 124,23 128,47 132,40
+  	144,40 147,38 150,45 153,30 156,42 159,40
+  180,40" fill="none" stroke="#D2D2D2" stroke-width="2"/>
+  <filter id="f1">
+    <feGaussianBlur stdDeviation="1"/>
+  </filter>
+  <circle id="circle" r="2.5" cx="0" cy="0" fill="#5D92FF" filter="url(#f1)"/>
+  <animateMotion href="#circle" dur="4s" begin="0s" repeatCount="indefinite">
+    <mpath href="#motionPath"/>
+  </animateMotion>
+</svg>

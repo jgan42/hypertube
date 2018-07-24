@@ -1,0 +1,5 @@
+section(*ngIf="user").profile
+  div.image
+    img([src]="user.picture_url || ''", onerror="this.src = 'assets/icons/question.svg'")
+  h1 {{ user.first_name }} {{ user.last_name }}
+  h2 {{ user.login }}

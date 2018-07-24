@@ -1,0 +1,18 @@
+div.player-controls
+  div.player-nav
+    div(#time="", (mousedown)="timeMouseDown()").bar-empty
+      span(*ngFor="let range of file?.ranges", [ngStyle]="buffer(range)").buffer
+      div([style.width]="video?.currentTime / video?.duration * 100 + '%'").bar
+    div.total-time {{ video?.currentTime | duration }}/{{ video?.duration | duration }}
+  div.player-buttons
+    div(tappable="", (click)="playPause()").play
+      img(src="assets/icons/{{ video.paused ? 'play' : 'pause' }}.svg")
+    div.volume
+      img(tappable="", (click)="toggleMute()", src="assets/icons/volume{{ video.muted ? '-off' : '' }}.svg")
+      div.bridge
+      div([style.display]="changingVolume ? 'block' : ''").bar-container
+        div(#volume="", (mousedown)="volumeMouseDown()").bar-empty
+          div([style.height]="video.volume * 100 + '%'").bar
+    div.title {{ file?.name }}
+    div(tappable="", (click)="toggleFullScreen($event)").fullscreen
+      img(src="assets/icons/fullscreen{{ isFullScreen ? '-off' : '' }}.svg")

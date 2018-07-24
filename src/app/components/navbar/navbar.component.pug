@@ -1,0 +1,19 @@
+nav.navbar
+  a(routerLink="/").title
+    img(src="assets/icons/favicon.png")
+    | Hypertube
+
+  div
+    ng-container(*ngIf="user; else notConnected")
+      app-search-bar
+      a.account {{ user.login }}
+        div.bridge
+        div.account-dropdown
+          a(routerLink="profile", routerLinkActive="active") Profile
+          a(routerLink="history", routerLinkActive="active") History
+          a(routerLink="settings", routerLinkActive="active") Settings
+          a((click)="signOut()") Sign out
+
+    ng-template(#notConnected="")
+      a(routerLink="/authentication/sign-in", routerLinkActive="active") Sign in
+      a(routerLink="/authentication/sign-up", routerLinkActive="active") Sign up

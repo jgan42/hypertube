@@ -1,0 +1,68 @@
+header
+  h1 Settings
+
+section(*ngIf="user")
+  div(*ngIf="isEmailPasswordAccount").flex-center
+    div.form-container
+      form([formGroup]="formEmail", (ngSubmit)="onSubmitEmail()", [class.submitted]="submitted.email")
+        div.form-group
+          label.center-block
+          | Current password
+          input(type="password", formControlName="password").form-control
+        div.form-group
+          label.center-block
+            | Email :
+            input.form-control(type="email", formControlName="email")
+
+        div.form-group.text-right
+          button.btn.btn-success(type="submit") Save
+  div.flex-center
+    div.form-container
+      form([formGroup]="formProfile", (ngSubmit)="onSubmitProfile()", [class.submitted]="submitted.profile", enctype="multipart/form-data")
+        div.form-group
+          label.center-block
+            | First name :
+            input.form-control(formControlName="first_name")
+        div.form-group
+          label.center-block
+            | Last name :
+            input.form-control(formControlName="last_name")
+        div.form-group
+          label.center-block
+            | Login :
+            input.form-control(formControlName="login")
+        div.form-group
+          label.center-block
+            | Language :
+            select.form-control(formControlName="language")
+              option(value="fr")
+                | French
+              option(value="en")
+                | English
+        div.form-group
+          label.center-block
+            | Picture :
+            input.form-control((change)="onFileChange($event)", type="file", formControlName="picture", accept="image/*", #fileInput="")
+
+        div.form-group.text-right
+          button.btn.btn-success(type="submit") Save
+  div(*ngIf="isEmailPasswordAccount").flex-center
+    div.form-container
+      form([formGroup]="formPassword", (ngSubmit)="onSubmitPassword()", [class.submitted]="submitted.password")
+        div.form-group
+          label.center-block
+          | Old Password
+          input(type="password", formControlName="old_password").form-control
+        div.form-group
+          label.center-block
+          | Password
+          input(type="password", formControlName="password").form-control
+        div.form-group
+          label.center-block
+          | Password Confirmation
+          input(type="password", formControlName="password_confirmation").form-control
+
+        div.form-group.text-right
+          button.btn.btn-success(type="submit") Save
+
+  app-message-error([error]="error")

@@ -1,0 +1,67 @@
+@import 'src/assets/colors/colors.scss';
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  height: 50px;
+  background-color: $bg-inner;
+  box-shadow: 0 1px 1px black;
+
+  .title, .title:hover, .title.active {
+    font-size: 1.2rem;
+    color: $red;
+    vertical-align: middle;
+
+    img {
+      height: 40px;
+      margin-right: 5px;
+      vertical-align: middle;
+    }
+  }
+
+  a {
+    color: $font-white;
+    padding: 5px;
+  }
+
+  .account {
+    position: relative;
+
+    .bridge {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      height: 10px;
+      width: 100%;
+      min-width: 100px;
+    }
+
+    .account-dropdown {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 10px);
+      padding: 10px 15px;
+      background-color: $bg-inner;
+      border: 1px solid $font-grey;
+      width: 120px;
+      transition: all .3s;
+    }
+
+    &:not(:hover) {
+      .account-dropdown {
+        display: none;
+      }
+    }
+
+    a {
+      display: block;
+    }
+  }
+}

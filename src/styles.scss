@@ -1,0 +1,138 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'assets/colors/colors.scss';
+@import "~nouislider/distribute/nouislider.min.css";
+
+* {
+  outline: none;
+}
+
+body {
+  margin: 0;
+  background-color: $bg-main;
+  font-family: Roboto, sans-serif;
+  color: $font-white;
+}
+
+header {
+  text-align: center;
+
+  h1 {
+    color: $color-complement-2;
+  }
+}
+
+a, a:not([href]):not([tabindex]), a:visited {
+  text-decoration: none;
+  cursor: pointer;
+  color: $blue;
+
+  &:hover:not(.active) {
+    color: $font-grey;
+  }
+  &.active {
+    color: white;
+    font-weight: bold;
+  }
+}
+
+.capitalize:first-letter {
+  text-transform: capitalize;
+}
+
+[tappable] {
+  cursor: pointer;
+}
+
+section {
+  display: block;
+  margin: 10px 5%;
+  background: $bg-inner;
+  box-shadow: -1px 1px 1px black;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.form-container {
+  max-width: 600px;
+  width: 100%;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+form.submitted {
+  input.ng-invalid {
+    border: 2px solid $color-secondary-1-0;
+    animation: shake .5s linear;
+  }
+}
+
+@-webkit-keyframes shake {
+  8%, 41% {
+    -webkit-transform: translateX(-10px);
+  }
+  25%, 58% {
+    -webkit-transform: translateX(10px);
+  }
+  75% {
+    -webkit-transform: translateX(-5px);
+  }
+  92% {
+    -webkit-transform: translateX(5px);
+  }
+  0%, 100% {
+    -webkit-transform: translateX(0);
+  }
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  margin-bottom: .5rem;
+}
+
+.form-control {
+  display: block;
+  width: calc(100% - 1.5rem);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+select.form-control {
+  width: 100%;
+  height: 38px;
+}
+
+.btn {
+  background-color: rgba(51,51,51,.4);
+  border-width: 0;
+  margin: 2px 5px;
+  padding: 10px 15px;
+  border-radius: .2vw;
+  box-shadow: none;
+  color: $font-white;
+  font-size: 1.1rem;
+  cursor: pointer;
+}

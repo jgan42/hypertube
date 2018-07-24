@@ -1,0 +1,5 @@
+form((submit)="search()", [class.focused]="focused").search-bar
+  label
+    img(src="assets/icons/search.svg")
+    input([(ngModel)]="input", [ngModelOptions]="{standalone: true}",
+          (focus)="onFocus()", (blur)="onBlur()", placeholder="Search...")

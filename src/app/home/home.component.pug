@@ -1,0 +1,11 @@
+header
+  h1 HYPERTUBE
+
+section
+  div.tabs-buttons
+    h2(*ngFor="let provider of providers", (click)="switchTab(provider)", tappable="", [class.active]="activeTab === provider").capitalize {{ provider }}
+    h2((click)="switchTab('custom')", tappable="", [class.active]="activeTab === 'custom'") Custom
+  div(*ngIf="activeTab === 'custom'")
+    app-custom-form
+  div(*ngIf="activeTab !== 'custom'")
+    app-torrents-list([list]="torrentList", [loading]="loading")

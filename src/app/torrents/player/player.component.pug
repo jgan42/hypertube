@@ -1,0 +1,59 @@
+div.player
+  video(#video="", autoplay="", [poster]="torrentScrap?.omdb?.Poster || ''",
+        (error)="handleError()", crossorigin="anonymous")
+  div(#overlay="", [class.active]="active || video.paused").player-overlay
+    div.top-buttons
+      button((click)="back()")
+        img(src="assets/icons/back.svg")
+      button((click)="switchTab('info')", [class.active]="activeTab === 'info'")
+
+        img(src="assets/icons/question.svg")
+      button((click)="switchTab('comments')", [class.active]="activeTab === 'comments'")
+        img(src="assets/icons/comments.svg")
+      button((click)="switchTab('subtitles')", [class.active]="activeTab === 'subtitles'")
+        img(src="assets/icons/subtitles.svg")
+    div((click)="playPause()").status-container
+
+      // INFO
+      div(*ngIf="activeTab === 'info'", (mouseenter)="setOverStatus(true)", (mouseleave)="setOverStatus(false)").tab
+        div.tab-header {{ torrentScrap?.title }}
+        div.tab-row Year : {{ torrentScrap?.omdb?.Year || torrentScrap?.year || '??' }}
+        div(*ngIf="torrentScrap?.omdb")
+          div.tab-row Director : {{ torrentScrap.omdb.Director }}
+          div.tab-row Production : {{ torrentScrap.omdb.Production }}
+          div.tab-row Actors : {{ torrentScrap.omdb.Actors }}
+          div.tab-row Genre : {{ torrentScrap.omdb.Genre }}
+          div.tab-row Rating : {{ torrentScrap.omdb.imdbRating }}
+          div.tab-row Plot : {{ torrentScrap.omdb.Plot }}
+
+        div.tab-header
+          div Status : {{ torrent?.status || 'Getting information' }}...
+          div(*ngIf="torrent && torrent?.status !== 'completed'")
+            div {{ torrent.connected_peers }} => Speed : {{ torrent.speed }}
+            div Downloaded : {{ torrent.percent || 0 }}% => Estimated time left : {{ (torrent.time_left || 0) | duration }}
+        div.files-selector
+          div(*ngFor="let file of torrent?.files").file
+            img(tappable="", (click)="selectFile(file)", src="assets/icons/play.svg", [style.background]="file.ready ? 'green' : 'red'")
+            div
+              div {{ file.name }}
+              div {{ file.status }} => {{ file.percent }}%
+                span(*ngIf="file.converting") &nbsp;| Conversion : {{ file.converting.status }}...&nbsp;
+                span(*ngIf="file.converting?.status === 'converting'") => {{ file.converting.percent }}% ({{ file.converting.time | duration  }})
+
+      // COMMENTS
+      div(*ngIf="activeTab === 'comments'", (mouseenter)="setOverStatus(true)", (mouseleave)="setOverStatus(false)").tab
+        app-comments([infoHash]="infoHash")
+
+      // SUBTITLES
+      div(*ngIf="activeTab === 'subtitles'", (mouseenter)="setOverStatus(true)", (mouseleave)="setOverStatus(false)").tab
+        div.tab-header Subtitles
+        div((click)="selectSubs()", [class.active]="!activeSubtitles").tab-row None
+        div((click)="selectSubs('en')", [class.active]="activeSubtitles === 'en'").tab-row English
+        div((click)="selectSubs('fr')", [class.active]="activeSubtitles === 'fr'").tab-row Francais
+        div.tab-row Customize :
+          button((click)="setSubSize('text-small')").btn small
+          button((click)="setSubSize('text-medium')").btn medium
+          button((click)="setSubSize('text-big')").btn big
+          button((click)="toggleSubBg()").btn background
+    app-controls([video]="video", [file]="selectedFile")
+  div.volume {{ topMessage }}

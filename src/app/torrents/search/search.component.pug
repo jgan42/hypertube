@@ -1,0 +1,25 @@
+header
+  h1 Search results
+
+section
+  h1 {{ query }}
+  div.flex-center
+    div.form-container
+      form([formGroup]="form")
+        div.form-group
+          label.center-block Date
+            nouislider([config]="configRangeYear", formControlName="rangeYear").form-control
+          label.center-block Order by
+            select(formControlName="order").form-control
+              option(value="")
+              option(value="Title") Title
+              option(value="Year") Year
+              option(value="Runtime") Runtime
+              option(value="imdbRating") Rating
+  div.tabs-buttons
+    h2(*ngFor="let provider of providers", (click)="switchTab(provider)", tappable="", [class.active]="activeTab === provider").capitalize {{ provider }}
+    h2((click)="switchTab('custom')", tappable="", [class.active]="activeTab === 'custom'") Custom
+  div(*ngIf="activeTab === 'custom'")
+    app-custom-form
+  div(*ngIf="activeTab !== 'custom'")
+    app-torrents-list([list]="sortedList", [loading]="loading", [formValues]="form.value")

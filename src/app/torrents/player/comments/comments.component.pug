@@ -1,0 +1,12 @@
+div.tab-header
+  div.flex-center
+    div.form-container
+      form((submit)="postComment()")
+        label.center-block New comment :
+          input([(ngModel)]="input", [ngModelOptions]="{standalone: true}",
+                (focus)="setFocus(true)", (blur)="setFocus(false)").form-control
+        div.form-group.text-right
+          button.btn.btn-success(type="submit") Submit !
+div(*ngFor="let comment of comments").tab-row
+  a([routerLink]="['/profile', comment.uid]", target="_blank").author {{ comment.login }} :
+  div.text {{ comment.text }}

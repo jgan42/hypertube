@@ -1,0 +1,25 @@
+section
+  div.flex-center
+    div.form-container
+      h3 Sign in
+      div.text-right
+        | Don"t have an account ?&nbsp;
+        a(routerLink="/authentication/sign-up") Sign Up
+
+      form([formGroup]="form", (ngSubmit)="onSubmit()", [class.submitted]="submitted")
+        div.form-group
+          label.center-block
+            | Email :
+            input.form-control(formControlName="email")
+        div.form-group
+          label.center-block
+            | Password :
+            span.pull-right
+              a.link(routerLink="/authentication/forgot-password", tabindex="-1") Forgot your password ?
+            input.form-control(type="password", formControlName="password")
+
+        app-message-error([error]="error")
+
+        div.form-group.text-right
+          app-oauth
+          button.btn.btn-success(type="submit") Submit

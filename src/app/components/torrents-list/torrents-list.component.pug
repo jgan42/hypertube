@@ -1,0 +1,10 @@
+ul
+  li(*ngFor="let torrent of list", tappable="", (click)="openTorrent(torrent)").torrent
+    div.image
+      img([src]="torrent?.omdb?.Poster || ''", onerror="this.src = 'http://lx1.dyncdn.cc/cdn/c9/c9c6056359b1bbc8196f09068a3b0719.jpg'")
+    div.details
+      h2 {{ torrent?.omdb?.Title || torrent?.title }} {{ history.indexOf(torrent?.infoHash) !== -1 ? '✓' : '' }}
+      div.text-red {{ torrent?.omdb?.Year || torrent?.year }}
+      div.rating {{ torrent?.omdb?.imdbRating || '?' }}/10
+  li(*ngIf="loading").torrent.loading
+    div(*ngIf="noResults").text-red No results...
