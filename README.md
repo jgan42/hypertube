@@ -14,5 +14,5 @@ Run: npm run init && npm run serve
 
 Running time: two months
 
-![list](/screenchots/list.png)
-![player](/screenchots/player.png)
+![list](/screenchots/list.png?raw=true)
+![player](/screenchots/player.png?raw=true)
