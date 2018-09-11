@@ -1,27 +1,18 @@
-# Hypertube
+# 42school Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
+## Hypertube
 
-## Development server
+Hypertube is a 42 school project. it has been realized by Mathieu Ceccato, Jeanpaul Gan and Olivier HAMON.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[Subject](subject.pdf)
 
-## Code scaffolding
+Stack: Angular2, Firebase and Nodejs.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Final mark: 125%
 
-## Build
+Run: npm run init && npm run serve
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Running time: two months
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+![list](https://raw.githubusercontent.com/jgan42/hypertube/master/screenchots/list.png)
+![player](https://raw.githubusercontent.com/jgan42/hypertube/master/screenchots/player.png)
